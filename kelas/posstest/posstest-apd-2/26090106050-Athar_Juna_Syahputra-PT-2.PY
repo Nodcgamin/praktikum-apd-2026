@@ -1,3 +1,10 @@
+makanan_1 = 15000
+makanan_2 = 16000
+makanan_3 = 19000
+makanan_4 = 20000
+makanan_5 = 21000
+makanan_6 = 22000
+
 harga_makanan = [15000, 16000, 19000, 20000, 21000, 22000]
 go_cek = 5000
 
@@ -9,7 +16,7 @@ rata_rata = (total_pembayaran / 7)
 
 nim = 50
 
-bolean = (nim != rata_rata)
+bolean = (nim != rata_rata)                                                         
 
 print(total_pembayaran)
 print(mata_uang_europe)

@@ -1,10 +1,20 @@
-geprek = 15000
-burger = 16000
-lalapan = 19000
-kentang_goreng = 20000
-nugget = 21000
-cream = 22000
+harga_makanan = [15000, 16000, 19000, 20000, 21000, 22000]
 go_cek = 5000
 
-total_bayar = (geprek + burger + lalapan + kentang_goreng + nugget + cream + go_cek )
-print(total_bayar)
+total_pembayaran = (harga_makanan[0] + harga_makanan[1] + harga_makanan[2] + harga_makanan [3] + harga_makanan[4] + harga_makanan[5]  + go_cek)
+
+mata_uang_europe = (total_pembayaran / 20456)
+
+rata_rata = (total_pembayaran / 7)
+
+nim = 50
+
+bolean = (nim != rata_rata)
+
+print(total_pembayaran)
+print(mata_uang_europe)
+print(rata_rata)
+print(bolean)
+print(harga_makanan[-6:])
+
+

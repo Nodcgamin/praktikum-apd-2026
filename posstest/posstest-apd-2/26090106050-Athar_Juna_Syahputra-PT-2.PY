@@ -5,7 +5,7 @@ makanan_4 = 20000
 makanan_5 = 21000
 makanan_6 = 22000
 
-harga_makanan = [15000, 16000, 19000, 20000, 21000, 22000]
+harga_makanan = [makanan_1,makanan_2,makanan_3,makanan_4,makanan_5,makanan_6]
 go_cek = 5000
 
 total_pembayaran = (harga_makanan[0] + harga_makanan[1] + harga_makanan[2] + harga_makanan [3] + harga_makanan[4] + harga_makanan[5]  + go_cek)

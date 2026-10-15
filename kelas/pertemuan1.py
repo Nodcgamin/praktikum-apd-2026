@@ -1,53 +1,64 @@
-username = "Larry"
-password = "068"
+"""
+Project 1 - Sistem Kasir Kantin Kampus (Rian & Yaya)
+Materi: Algoritma, Pseudocode, Flowchart, Percabangan (If-Else), Pengulangan (Looping)
+"""
+
+DISKON_MAHASISWA = 0.10  # diskon 10% untuk mahasiswa
 
 
-while True:
-    username_input = input("Masukkan username anda: ").strip()
-    password_input = input("Masukkan password anda: ").strip()
+def baca_angka(pesan, minimal=1):
+    """Meminta input angka bulat; mengulang sampai valid."""
+    while True:
+        try:
+            nilai = int(input(pesan))
+            if nilai >= minimal:
+                return nilai
+            print(f"  Nilai minimal {minimal}.")
+        except ValueError:
+            print("  Input harus berupa angka bulat.")
 
-    if username_input == username and password_input == password:
-        print("Berhasil login")
-        break
-    elif username_input != username and password_input != password:
-        print("Username dan Password salah atau kosong. Coba lagi")
-    elif username_input != username:
-        print("Username salah")
-    else:
-        print("Password salah")
 
-darah = {
-    'A+': 0, 'A-': 0,
-    'B+': 0, 'B-': 0,
-    'AB+': 0, 'AB-': 0,
-    'O+': 0, 'O-': 0
-} 
+def main():
+    print("=" * 40)
+    print("   SISTEM KASIR KANTIN KAMPUS")
+    print("=" * 40)
 
-while True:
-    goldar_input = input("Masukkan golongan darah(A/B/AB/O): ").strip().upper()
-    if goldar_input not in ['A', 'B', 'AB', 'O']:
-        print("Input tidak valid")
-        continue
+    lanjut = "Y"
+    total_hari_ini = 0
 
-    rh = input("Masukkan Rhesus(+/-): ").strip()
-    if rh not in ['+', '-']:
-        print("Input tidak valid")
-        continue
+    # PENGULANGAN (Looping): ulangi selama kasir menjawab 'Ya'
+    while lanjut == "Y":
+        # INPUT pesanan (jajargenjang di flowchart)
+        menu = input("\nNama menu         : ").strip()
+        harga = baca_angka("Harga satuan (Rp) : ")
+        jumlah = baca_angka("Jumlah            : ")
+        status = input("Mahasiswa? (y/n)  : ").strip().lower()
 
-    jumlah_kantong_darah = input("Masukkan jumlah kantong darah: ").strip()
-    if not jumlah_kantong_darah.isdigit() or int(jumlah_kantong_darah) <= 0:
-        ("Jumlah kantong darah harus lebih dari 0")
-        continue
-    jumlah_kantong_darah = int(jumlah_kantong_darah)
+        # PROSES hitung total (persegi panjang)
+        total = harga * jumlah
 
-    goldar_rh = goldar_input + rh
-    darah[goldar_rh] += jumlah_kantong_darah*500
+        # PERCABANGAN If-Else (belah ketupat)
+        if status == "y":          # True  -> dapat diskon
+            potongan = total * DISKON_MAHASISWA
+            total = total - potongan
+            keterangan = f"Diskon mahasiswa {int(DISKON_MAHASISWA * 100)}%"
+        else:                      # False -> harga normal
+            keterangan = "Harga normal"
 
-    jawaban = input("Apakah masih mau input lagi? (Y/T): ").strip().upper()
-    if jawaban == "T":
-        break
+        # OUTPUT (jajargenjang)
+        print(f"\n  {jumlah} x {menu}")
+        print(f"  {keterangan}")
+        print(f"  TOTAL BAYAR : Rp {int(total):,}".replace(",", "."))
 
-print("Ringkasan jumlah darah dalam ml")
-for golongan, jumlah in darah.items():
-    if jumlah > 0:
-        print(f"{golongan}: {jumlah} ml")
+        total_hari_ini += total
+
+        # Input 'lanjut' ada DI DALAM loop (perbaikan bug infinite loop)
+        lanjut = input("\nPesanan baru? (Y/T) : ").strip().upper()
+
+    print("\n" + "-" * 40)
+    print(f"Total pemasukan hari ini : Rp {int(total_hari_ini):,}".replace(",", "."))
+    print("Terima kasih, selamat makan!")
+
+
+if __name__ == "__main__":
+    main()

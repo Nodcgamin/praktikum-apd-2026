@@ -58,7 +58,7 @@ while True :
         print("0. Logout")
         pilih = input("Pilih menu: ")
 
-        if pilih == "1" :
+        if pilih == 1 :
             print("TAMBAH RIWAYAT GAME")    
             nomor_map = 0
             for m in map_pool :

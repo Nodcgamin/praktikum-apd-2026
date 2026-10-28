@@ -17,9 +17,9 @@ while True :
         print("1. login")
         print("2. register ")
         print("3. logout")
-        pilih = input("silahkan pilih menu:")
+        pilih = int(input("silahkan pilih menu:"))
 
-        if pilih.isdigit() == "1" :
+        if pilih == 1 :
             username = input("masukkan nama: ").lower()
             password = input("massukan password:")
             for u in user :
@@ -28,7 +28,7 @@ while True :
             if user_ada == None :
                 print("username atau password salah")
                 input("tekan enter untuk kembali...")
-        elif  pilih.isdigit() == "2":
+        elif  pilih == 2:
             print("Regis Bos Ku")
             username = input("Masukkan Username:").lower()
             password = input("Masukkan Password:")
@@ -44,7 +44,7 @@ while True :
                 user.append ({"username": username, "password": password, "role": "user"})
                 print("Mantap silahkan Login")
             input("tekan enter untuk kembali...")
-        elif pilih.isdigit() == "3":
+        elif pilih == 3:
             print("tamatlah sudah cerita kami")
             break
         else :
@@ -207,7 +207,7 @@ while True :
             elif ada:
                 print("MINES LITERASI DONGO")
             else:
-                map_pool[len(map_pool) + 1] = nama_map
+                map_pool.update({len(map_pool) + 1: nama_map})
                 print(f"Map {nama_map} berhasil ditambahkan mantap mantap mantap")
             input("tekan Enter untuk kembali...")
 
